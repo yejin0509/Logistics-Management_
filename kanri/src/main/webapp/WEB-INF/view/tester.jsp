@@ -7,6 +7,5 @@
 <title>tester no page desu</title>
 </head>
 <body>
-
 </body>
 </html>

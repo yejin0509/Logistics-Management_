@@ -10,25 +10,39 @@
 <body>
 
 	<table>
-<!-- 필터 달아줘야 함 -->	
-	<div>
-		<!--상품 id로 검색하기  -->
-		<input type="text" id="" name=""/>
-		<!-- query where id=? 기준으로 검색 -->
-		<submit action=""/>
-		<br>
-		<select>
-			<option>분류1</option>
-			<option>분류2</option>
-		</select>
-		
-		<select></select>
-		<select></select>
-		<select></select>
-		
-		<!-- 돋보기 이미지 부여 후 눌러서 직접 찾아볼 수 있음 -->
-		<a class="" href=""></a>
-	</div>
+		<!-- 필터 달아줘야 함 -->
+		<div>
+			<!--상품 id로 검색하기  -->
+			<input type="text" id="" name="" />
+			<!-- query where product_id=? 기준으로 검색 -->
+			<submit action="" name="search1" value="검색"/>
+
+		</div>
+		<!-- 그 외의 것으로 검색하기 -->
+		<div>
+			<select>
+				<option>product_type1</option>
+				<option>product_type2</option>
+				<option>product_type3</option>
+			</select>
+			<!-- product_name으로 검색 -->
+			<input type="text" />
+
+			<!-- 제조사 검색 -->
+			<select>
+				<option>company1</option>
+				<option>company2</option>
+				<option>company3</option>
+			</select>
+			<!-- 저장 위치 검색 -->
+			<select>
+				<option>location1</option>
+				<option>location2</option>
+				<option>location3</option>
+			</select>
+			
+			<input type="submit" name="search2" value="검색"/>
+		</div>
 
 		<tr>
 			<!--총 8개 -->
@@ -64,13 +78,13 @@
 		<!--"5"개씩 끊었을 때 밑에 몇 페이지 있는지 표시  -->
 		<c:if test="${articlePage.hasArticles() }">
 			<tr>
-				<td colspan="4"><c:if test="${articlePage.startPage>5 }">
-						<a href="list.do?pageNo=${articlePage.startPage -5 }">[이전]</a>
+				<td colspan="4"><c:if test="${articlePage.startPage>10 }">
+						<a href="list.do?pageNo=${articlePage.startPage -10 }">[이전]</a>
 					</c:if> <c:forEach var="pNo" begin="${articlePage.startPage }"
 						end="${articlePage.endPage }">
 						<a href="list.do?pagNo=${pNo }">[${pNo}]</a>
 					</c:forEach> <c:if test="${articlePage.endPage < articlePage.totalPages}">
-						<a href="list.do?pageNo=${articlePage.startPage +5 }">[다음]</a>
+						<a href="list.do?pageNo=${articlePage.startPage +10 }">[다음]</a>
 					</c:if></td>
 			</tr>
 		</c:if>
