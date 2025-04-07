@@ -10,16 +10,16 @@
 	</listener>
 	<!-- param 내용 설정 -->
 	<context-param>
-		<param-name>poolConfig</param-name>
+		<param-name>pool_Config</param-name>
 		<param-value>
-			jdbcdriver=oracle.jdbc.OracleDriver
-			jdbcUrl=jdbc:oracle:thin:@localhost:1521/xe
-			dbUser=system
-			dbPass=1234
-			validationQuery=select 1
-			minIdle=3
-			maxTotal=30
-			poolName=inventory
+			jdbc_Driver=oracle.jdbc.OracleDriver
+			jdbc_Url=jdbc:oracle:thin:@localhost:1521/xe
+			db_User=system
+			db_Pass=1234
+			validation_Query=select 1
+			min_Idle=3
+			max_Total=30
+			pool_Name=inventory
 		</param-value>
 	</context-param>
 	

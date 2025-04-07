@@ -6,33 +6,33 @@ import kanri.model.Inventory;
 
 public class ListPage {
 	private int total;
-	private int currentPage;
+	private int current_Page;
 	private List<Inventory> content;
-	private int totalPages;
-	private int startPage;
-	private int endPage;
+	private int total_Pages;
+	private int start_Page;
+	private int end_Page;
 
-	public ListPage(int total, int currentPage, int size, List<Inventory> content) {
+	public ListPage(int total, int current_Page, int size, List<Inventory> content) {
 		this.total = total;
-		this.currentPage = currentPage;
+		this.current_Page = current_Page;
 		this.content = content;
 		if (total == 0) {
-			totalPages = 0;
-			startPage = 0;
-			endPage = 0;
+			total_Pages = 0;
+			start_Page = 0;
+			end_Page = 0;
 		} else {
-			totalPages = total / size;
+			total_Pages = total / size;
 			if (total % size > 0) {
-				totalPages++;
+				total_Pages++;
 			}
-			int modVal = currentPage % 5;
-			startPage = currentPage / 5 * 5 + 1;
+			int modVal = current_Page % 5;
+			start_Page = current_Page / 5 * 5 + 1;
 			if (modVal == 0)
-				startPage -= 5;
+				start_Page -= 5;
 
-			endPage = startPage + 4;
-			if (endPage > totalPages)
-				endPage = totalPages;
+			end_Page = start_Page + 4;
+			if (end_Page > total_Pages)
+				end_Page = total_Pages;
 		}
 	}
 
@@ -49,11 +49,11 @@ public class ListPage {
 	}
 
 	public int getCurrentPage() {
-		return currentPage;
+		return current_Page;
 	}
 
 	public int getTotalPages() {
-		return totalPages;
+		return total_Pages;
 	}
 
 	public List<Inventory> getContent() {
@@ -61,10 +61,10 @@ public class ListPage {
 	}
 
 	public int getStartPage() {
-		return startPage;
+		return start_Page;
 	}
 
 	public int getEndPage() {
-		return endPage;
+		return end_Page;
 	}
 }

@@ -12,21 +12,21 @@ import kanri.model.Product;
 public class ProductDao {
 
 	// 상품 ID로 상품 정보를 조회하는 메소드
-	public static Product getProductById(String productId) {
+	public static Product getProductById(String product_Id) {
 		Product product = null;
-		String query = "SELECT * FROM products WHERE product_id = ?";
+		String query = "SELECT * FROM products WHERE product_Id = ?";
 
 		try (Connection conn = ConnectionProvider.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(query)) {
 
-			pstmt.setString(1, productId);
+			pstmt.setString(1, product_Id);
 
 			try (ResultSet rs = pstmt.executeQuery()) {
 				if (rs.next()) {
 					product = new Product();
-					product.setProduct_id(rs.getString("product_id"));
-					product.setProduct_type(rs.getString("product_type"));
-					product.setProduct_name(rs.getString("product_name"));
+					product.setProduct_Id(rs.getString("product_Id"));
+					product.setProduct_Type(rs.getString("product_Type"));
+					product.setProduct_Name(rs.getString("product_Name"));
 					product.setCompany(rs.getString("company"));
 					product.setPrice(rs.getInt("price"));
 					product.setContent(rs.getString("content"));
@@ -37,66 +37,67 @@ public class ProductDao {
 		}
 		return product;
 	}
-	
-    public static List<Product> getProductsByConditions(String productType, String productName, String company, String location, int maxAmount) {
-        List<Product> products = new ArrayList<>();
-        StringBuilder query = new StringBuilder("SELECT * FROM products WHERE 1=1");
 
-        // 조건에 따라 쿼리 동적으로 생성
-        if (productType != null && !productType.equals("All")) {
-            query.append(" AND product_type = ?");
-        }
-        if (productName != null && !productName.isEmpty()) {
-            query.append(" AND product_name LIKE ?");
-        }
-        if (company != null && !company.equals("All")) {
-            query.append(" AND company = ?");
-        }
-        if (location != null && !location.equals("All")) {
-            query.append(" AND location = ?");
-        }
-        if (maxAmount > 0) {
-            query.append(" AND price <= ?");
-        }
+	public static List<Product> getProductsByConditions(String product_Type, String product_Name, String company,
+			String location, int max_Amount) {
+		List<Product> products = new ArrayList<>();
+		StringBuilder query = new StringBuilder("SELECT * FROM products WHERE 1=1");
 
-        try (Connection conn = ConnectionProvider.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(query.toString())) {
+		// 조건에 따라 쿼리 동적으로 생성
+		if (product_Type != null && !product_Type.equals("All")) {
+			query.append(" AND product_type = ?");
+		}
+		if (product_Name != null && !product_Name.isEmpty()) {
+			query.append(" AND product_name LIKE ?");
+		}
+		if (company != null && !company.equals("All")) {
+			query.append(" AND company = ?");
+		}
+		if (location != null && !location.equals("All")) {
+			query.append(" AND location = ?");
+		}
+		if (max_Amount > 0) {
+			query.append(" AND price <= ?");
+		}
 
-            int index = 1;
+		try (Connection conn = ConnectionProvider.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(query.toString())) {
 
-            // 조건에 따라 파라미터 설정
-            if (productType != null && !productType.equals("All")) {
-                pstmt.setString(index++, productType);
-            }
-            if (productName != null && !productName.isEmpty()) {
-                pstmt.setString(index++, "%" + productName + "%");
-            }
-            if (company != null && !company.equals("All")) {
-                pstmt.setString(index++, company);
-            }
-            if (location != null && !location.equals("All")) {
-                pstmt.setString(index++, location);
-            }
-            if (maxAmount > 0) {
-                pstmt.setInt(index++, maxAmount);
-            }
+			int index = 1;
 
-            try (ResultSet rs = pstmt.executeQuery()) {
-                while (rs.next()) {
-                    Product product = new Product();
-                    product.setProduct_id(rs.getString("product_id"));
-                    product.setProduct_type(rs.getString("product_type"));
-                    product.setProduct_name(rs.getString("product_name"));
-                    product.setCompany(rs.getString("company"));
-                    product.setPrice(rs.getInt("price"));
-                    product.setContent(rs.getString("content"));
-                    products.add(product);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return products;
-    }
+			// 조건에 따라 파라미터 설정
+			if (product_Type != null && !product_Type.equals("All")) {
+				pstmt.setString(index++, product_Type);
+			}
+			if (product_Name != null && !product_Name.isEmpty()) {
+				pstmt.setString(index++, "%" + product_Name + "%");
+			}
+			if (company != null && !company.equals("All")) {
+				pstmt.setString(index++, company);
+			}
+			if (location != null && !location.equals("All")) {
+				pstmt.setString(index++, location);
+			}
+			if (max_Amount > 0) {
+				pstmt.setInt(index++, max_Amount);
+			}
+
+			try (ResultSet rs = pstmt.executeQuery()) {
+				while (rs.next()) {
+					Product product = new Product();
+					product.setProduct_Id(rs.getString("product_Id"));
+					product.setProduct_Type(rs.getString("product_Type"));
+					product.setProduct_Name(rs.getString("product_Name"));
+					product.setCompany(rs.getString("company"));
+					product.setPrice(rs.getInt("price"));
+					product.setContent(rs.getString("content"));
+					products.add(product);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return products;
+	}
 
 }

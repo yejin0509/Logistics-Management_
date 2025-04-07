@@ -1,9 +1,9 @@
 package kanri.model;
 
 public class Product {
-	private String product_id;
-	private String product_type;
-	private String product_name;
+	private String product_Id;
+	private String product_Type;
+	private String product_Name;
 	private String company;
 	private int price;
 	private String content;
@@ -12,39 +12,39 @@ public class Product {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Product(String product_id, String product_type, String product_name, String company, int price,
+	public Product(String product_Id, String product_Type, String product_Name, String company, int price,
 			String content) {
 		super();
-		this.product_id = product_id;
-		this.product_type = product_type;
-		this.product_name = product_name;
+		this.product_Id = product_Id;
+		this.product_Type = product_Type;
+		this.product_Name = product_Name;
 		this.company = company;
 		this.price = price;
 		this.content = content;
 	}
 
 	public String getProduct_id() {
-		return product_id;
+		return product_Id;
 	}
 
-	public void setProduct_id(String product_id) {
-		this.product_id = product_id;
+	public void setProduct_Id(String product_Id) {
+		this.product_Id = product_Id;
 	}
 
-	public String getProduct_type() {
-		return product_type;
+	public String getProduct_Type() {
+		return product_Type;
 	}
 
-	public void setProduct_type(String product_type) {
-		this.product_type = product_type;
+	public void setProduct_Type(String product_Type) {
+		this.product_Type = product_Type;
 	}
 
-	public String getProduct_name() {
-		return product_name;
+	public String getProduct_Name() {
+		return product_Name;
 	}
 
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
+	public void setProduct_Name(String product_Name) {
+		this.product_Name = product_Name;
 	}
 
 	public String getCompany() {

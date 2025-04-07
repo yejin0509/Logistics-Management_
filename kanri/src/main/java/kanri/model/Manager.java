@@ -1,24 +1,24 @@
 package kanri.model;
 
 public class Manager {
-	private String manager_id;
+	private String manager_Id;
 	private String password;
 
 	public Manager() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Manager(String manager_id, String password) {
-		this.manager_id = manager_id;
+	public Manager(String manager_Id, String password) {
+		this.manager_Id = manager_Id;
 		this.password = password;
 	}
 
-	public String getManager_id() {
-		return manager_id;
+	public String getManager_Id() {
+		return manager_Id;
 	}
 
-	public void setManager_id(String manager_id) {
-		this.manager_id = manager_id;
+	public void setManager_Id(String manager_Id) {
+		this.manager_Id = manager_Id;
 	}
 
 	public String getPassword() {

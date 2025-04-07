@@ -12,10 +12,10 @@ public class SearchByIdHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// 폼에서 전달받은 데이터 처리
-		String productId = req.getParameter("search_product_id");
+		String product_Id = req.getParameter("search_product_id");
 
 		// DB 조회 등 비즈니스 로직 실행
-		Product product = ProductDao.getProductById(productId);
+		Product product = ProductDao.getProductById(product_Id);
 
 		// 조회된 결과를 request 객체에 저장
 		req.setAttribute("product", product);

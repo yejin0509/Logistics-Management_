@@ -20,11 +20,11 @@ public class DBCPInitListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		String poolConfig = 
-				sce.getServletContext().getInitParameter("poolConfig");
+		String pool_Config = 
+				sce.getServletContext().getInitParameter("pool_Config");
 		Properties prop = new Properties();
 		try {
-			prop.load(new StringReader(poolConfig));
+			prop.load(new StringReader(pool_Config));
 		} catch (IOException e) {
 			throw new RuntimeException("config load fail", e);
 		}
@@ -34,9 +34,9 @@ public class DBCPInitListener implements ServletContextListener {
 	}
 
 	private void loadJDBCDriver(Properties prop) {
-		String driverClass = prop.getProperty("jdbcdriver");
+		String driver_Class = prop.getProperty("jdbc_Driver");
 		try {
-			Class.forName(driverClass);
+			Class.forName(driver_Class);
 		} catch (ClassNotFoundException ex) {
 			throw new RuntimeException("fail to load JDBC Driver", ex);
 		}
@@ -44,45 +44,45 @@ public class DBCPInitListener implements ServletContextListener {
 
 	private void initConnectionPool(Properties prop) {
 		try {
-			String jdbcUrl = prop.getProperty("jdbcUrl");
-			String username = prop.getProperty("dbUser");
-			String pw = prop.getProperty("dbPass");
+			String jdbc_Url = prop.getProperty("jdbc_Url");
+			String username = prop.getProperty("db_User");
+			String pw = prop.getProperty("db_Pass");
 
-			ConnectionFactory connFactory = 
-					new DriverManagerConnectionFactory(jdbcUrl, username, pw);
+			ConnectionFactory conn_Factory = 
+					new DriverManagerConnectionFactory(jdbc_Url, username, pw);
 
-			PoolableConnectionFactory poolableConnFactory = 
-					new PoolableConnectionFactory(connFactory, null);
-			String validationQuery = prop.getProperty("validationQuery");
-			if (validationQuery != null && !validationQuery.isEmpty()) {
-				poolableConnFactory.setValidationQuery(validationQuery);
+			PoolableConnectionFactory poolable_Conn_Factory = 
+					new PoolableConnectionFactory(conn_Factory, null);
+			String validation_Query = prop.getProperty("validation_Query");
+			if (validation_Query != null && !validation_Query.isEmpty()) {
+				poolable_Conn_Factory.setValidationQuery(validation_Query);
 			}
-			GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
-			poolConfig.setTimeBetweenEvictionRunsMillis(1000L * 60L * 5L);
-			poolConfig.setTestWhileIdle(true);
-			int minIdle = getIntProperty(prop, "minIdle", 5);
-			poolConfig.setMinIdle(minIdle);
-			int maxTotal = getIntProperty(prop, "maxTotal", 50);
-			poolConfig.setMaxTotal(maxTotal);
+			GenericObjectPoolConfig pool_Config = new GenericObjectPoolConfig();
+			pool_Config.setTimeBetweenEvictionRunsMillis(1000L * 60L * 5L);
+			pool_Config.setTestWhileIdle(true);
+			int minIdle = getIntProperty(prop, "min_Idle", 5);
+			pool_Config.setMinIdle(minIdle);
+			int maxTotal = getIntProperty(prop, "max_Total", 50);
+			pool_Config.setMaxTotal(maxTotal);
 
-			GenericObjectPool<PoolableConnection> connectionPool = 
-					new GenericObjectPool<>(poolableConnFactory, poolConfig);
-			poolableConnFactory.setPool(connectionPool);
+			GenericObjectPool<PoolableConnection> connection_Pool = 
+					new GenericObjectPool<>(poolable_Conn_Factory, pool_Config);
+			poolable_Conn_Factory.setPool(connection_Pool);
 			
 			//제공된 풀 이름(inventory)으로 커넥션 풀 등록
 			Class.forName("org.apache.commons.dbcp2.PoolingDriver");
 			PoolingDriver driver = (PoolingDriver)
 				DriverManager.getDriver("jdbc:apache:commons:dbcp:");
-			String poolName = prop.getProperty("poolName");
-			driver.registerPool(poolName, connectionPool);
+			String pool_Name = prop.getProperty("pool_Name");
+			driver.registerPool(pool_Name, connection_Pool);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	private int getIntProperty(Properties prop, String propName, int defaultValue) {
-		String value = prop.getProperty(propName);
-		if (value == null) return defaultValue;
+	private int getIntProperty(Properties prop, String prop_Name, int default_Value) {
+		String value = prop.getProperty(prop_Name);
+		if (value == null) return default_Value;
 		return Integer.parseInt(value);
 	}
 

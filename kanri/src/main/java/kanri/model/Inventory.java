@@ -1,7 +1,7 @@
 package kanri.model;
 
 public class Inventory {
-	private String product_id;
+	private String product_Id;
 	private String location;
 	private int stock;
 
@@ -9,19 +9,19 @@ public class Inventory {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Inventory(String product_id, String location, int stock) {
+	public Inventory(String product_Id, String location, int stock) {
 		super();
-		this.product_id = product_id;
+		this.product_Id = product_Id;
 		this.location = location;
 		this.stock = stock;
 	}
 
-	public String getProduct_id() {
-		return product_id;
+	public String getProduct_Id() {
+		return product_Id;
 	}
 
-	public void setProduct_id(String product_id) {
-		this.product_id = product_id;
+	public void setProduct_Id(String product_Id) {
+		this.product_Id = product_Id;
 	}
 
 	public String getLocation() {

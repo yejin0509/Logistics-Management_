@@ -1,31 +1,31 @@
 package kanri.model;
 
 public class Client {
-	private String client_id;
+	private String client_Id;
 	private String password;
 	private String company;
-	private String c_number;
+	private String c_Number;
 	private String address;
 
 	public Client() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Client(String client_id, String password, String company, String c_number, String address) {
+	public Client(String client_Id, String password, String company, String c_Number, String address) {
 		super();
-		this.client_id = client_id;
+		this.client_Id = client_Id;
 		this.password = password;
 		this.company = company;
-		this.c_number = c_number;
+		this.c_Number = c_Number;
 		this.address = address;
 	}
 
 	public String getClient_id() {
-		return client_id;
+		return client_Id;
 	}
 
-	public void setClient_id(String client_id) {
-		this.client_id = client_id;
+	public void setClient_id(String client_Id) {
+		this.client_Id = client_Id;
 	}
 
 	public String getPassword() {
@@ -44,12 +44,12 @@ public class Client {
 		this.company = company;
 	}
 
-	public String getC_number() {
-		return c_number;
+	public String getC_Number() {
+		return c_Number;
 	}
 
-	public void setC_number(String c_number) {
-		this.c_number = c_number;
+	public void setC_Number(String c_Number) {
+		this.c_Number = c_Number;
 	}
 
 	public String getAddress() {
