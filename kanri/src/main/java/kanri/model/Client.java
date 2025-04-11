@@ -21,11 +21,11 @@ public class Client {
 		this.address = address;
 	}
 
-	public String getClient_id() {
+	public String getClient_Id() {
 		return client_Id;
 	}
 
-	public void setClient_id(String client_Id) {
+	public void setClient_Id(String client_Id) {
 		this.client_Id = client_Id;
 	}
 

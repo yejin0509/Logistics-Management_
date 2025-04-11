@@ -23,7 +23,7 @@ public class Product {
 		this.content = content;
 	}
 
-	public String getProduct_id() {
+	public String getProduct_Id() {
 		return product_Id;
 	}
 
