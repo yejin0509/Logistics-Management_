@@ -1,5 +1,6 @@
 package kanri.model;
 
+//Inventory 자바 빈스
 public class Inventory {
 	private String product_Id;
 	private String location;
@@ -10,7 +11,6 @@ public class Inventory {
 	}
 
 	public Inventory(String product_Id, String location, int stock) {
-		super();
 		this.product_Id = product_Id;
 		this.location = location;
 		this.stock = stock;

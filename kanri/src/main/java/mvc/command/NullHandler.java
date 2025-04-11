@@ -2,7 +2,7 @@ package mvc.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+// 핸들러 에러 날 때
 public class NullHandler implements CommandHandler {
 
 	@Override

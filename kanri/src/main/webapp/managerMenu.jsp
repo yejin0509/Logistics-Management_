@@ -54,14 +54,21 @@ body {
 	right: 7%; /* frame의 왼쪽에서 40% 오른쪽으로 이동 */
 }
 
+.images {
+position : relative;
+width: 53%;
+height: auto;
+ }
+
 </style>
 </head>
 <body>
 	<div class="container">
 		<img src="./images/frame.png" alt="frame" class="frame">
-		<a href="tester.jsp">
+		<form action="nothingInclude.do">
 			<img src="./images/inventory_list_box.png" alt="box1" class="box1">
-		</a>
+				<input type="submit" style="opacity: 0; width: 100%; height: 100%; position: absolute; top: 0; left: 0; cursor: pointer;"/>
+			</form>
 		<a href="tester.jsp">
 			<img src="./images/order_box.png" alt="box1" class="box2">
 		</a>

@@ -10,7 +10,35 @@ import jdbc.connection.ConnectionProvider;
 import kanri.model.Product;
 
 public class ProductDao {
+	
+	// 전체 상품 리스트 조회 (상품명, ID, 가격 등 가져오기용)
+	//client_order 페이지에 상품 출력을 위함
+	public static List<Product> getAllProducts() {
+	    List<Product> products = new ArrayList<>();
+	    String query = "SELECT product_Id, product_Name, price FROM product";
 
+	    try (Connection conn = ConnectionProvider.getConnection();
+	         PreparedStatement pstmt = conn.prepareStatement(query);
+	         ResultSet rs = pstmt.executeQuery()) {
+	    	
+
+	        while (rs.next()) {
+	            Product product = new Product();
+	            product.setProduct_Id(rs.getString("product_Id"));
+	            product.setProduct_Name(rs.getString("product_Name"));
+	            product.setPrice(rs.getInt("price"));
+	            products.add(product);
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return products;
+	}
+
+
+	//client_order 페이지에 상품 출력을 위함
 	// 상품 ID로 상품 정보를 조회하는 메소드
 	public static Product getProductById(String product_Id) {
 		Product product = null;

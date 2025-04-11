@@ -1,7 +1,7 @@
 package kanri.model;
 
 import java.util.Date;
-
+//InBound 자바 빈스
 public class InBound {
 	private String client_Id;
 	private String product_Id;

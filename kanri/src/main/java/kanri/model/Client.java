@@ -1,5 +1,6 @@
 package kanri.model;
 
+//Client 자바 빈스
 public class Client {
 	private String client_Id;
 	private String password;

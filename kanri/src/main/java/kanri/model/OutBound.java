@@ -1,7 +1,7 @@
 package kanri.model;
 
 import java.util.Date;
-
+//OutBound 자바 빈스
 public class OutBound {
 	private String client_Id;
 	private String product_Id;

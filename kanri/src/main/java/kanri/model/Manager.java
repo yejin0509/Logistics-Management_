@@ -1,5 +1,7 @@
 package kanri.model;
 
+
+//Manager 자바 빈스
 public class Manager {
 	private String manager_Id;
 	private String password;

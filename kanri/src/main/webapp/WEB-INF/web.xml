@@ -22,26 +22,21 @@
 			pool_Name=inventory
 		</param-value>
 	</context-param>
-	
-	<servlet>
-    <servlet-name>SearchByIdHandler</servlet-name>
-    <servlet-class>kanri.command.SearchByIdHandler</servlet-class>
-</servlet>
 
-<servlet-mapping>
-    <servlet-name>SearchByIdHandler</servlet-name>
-    <url-pattern>/SearchByIdHandler</url-pattern>
-</servlet-mapping>
-		
 	<servlet>
-    <servlet-name>SearchByElseHandler</servlet-name>
-    <servlet-class>kanri.command.SearchByElseHandler</servlet-class>
-</servlet>
+		<servlet-name>ControllerUsingURI</servlet-name>
+		<servlet-class>mvc.controller.ControllerUsingURI</servlet-class>
+		<init-param>
+			<param-name>configURI</param-name>
+			<param-value>/WEB-INF/commandHandlerURI.properties</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
 
-<servlet-mapping>
-    <servlet-name>SearchByElseHandler</servlet-name>
-    <url-pattern>/SearchByElseHandler</url-pattern>
-</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ControllerUsingURI</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
 
 
 	<welcome-file-list>
