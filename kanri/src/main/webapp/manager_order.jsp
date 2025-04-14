@@ -43,6 +43,9 @@
             font-weight: bold;
             text-align: right;
         }
+        h1,h3{
+font-weight:bold;
+}
     </style>
 </head>
 <body>
@@ -93,7 +96,7 @@
                                 <td>
                                     <input type="text" name="rowTotal" readonly class="form-control no-border-input" />
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <button type="button" class="btn" onclick="removeRow(this)">🗑️</button>
                                 </td>
                             </tr>

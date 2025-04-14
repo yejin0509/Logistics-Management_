@@ -52,6 +52,9 @@ footer {
 	font-weight: bold;
 	text-align: right;
 }
+h1,h3{
+font-weight:bold;
+}
 </style>
 </head>
 <body>
