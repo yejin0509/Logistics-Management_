@@ -9,7 +9,6 @@ public class Client {
 	private String address;
 
 	public Client() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Client(String client_Id, String password, String company, String c_Number, String address) {
@@ -21,11 +20,11 @@ public class Client {
 		this.address = address;
 	}
 
-	public String getClient_id() {
+	public String getClient_Id() {
 		return client_Id;
 	}
 
-	public void setClient_id(String client_Id) {
+	public void setClient_Id(String client_Id) {
 		this.client_Id = client_Id;
 	}
 
@@ -60,6 +59,5 @@ public class Client {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
 
 }

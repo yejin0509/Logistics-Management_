@@ -1,4 +1,5 @@
 package kanri.model;
+
 //Product 자바 빈스
 public class Product {
 	private String product_Id;
@@ -23,7 +24,7 @@ public class Product {
 		this.content = content;
 	}
 
-	public String getProduct_id() {
+	public String getProduct_Id() {
 		return product_Id;
 	}
 

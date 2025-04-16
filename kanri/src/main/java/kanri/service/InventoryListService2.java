@@ -45,4 +45,13 @@ public class InventoryListService2 {
 		        throw new RuntimeException(e);
 		    }
 		}
+		
+		// 전체 필드 개수 가져오기
+				public int countProduct() {
+				    try (Connection conn = ConnectionProvider.getConnection()) {
+				        return KanriDao.countProduct(conn);
+				    } catch (SQLException e) {
+				        throw new RuntimeException(e);
+				    }
+				}
 }

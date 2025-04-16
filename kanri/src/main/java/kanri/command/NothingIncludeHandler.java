@@ -2,6 +2,7 @@ package kanri.command;
 
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -35,6 +36,9 @@ public class NothingIncludeHandler implements CommandHandler {
 		        //저장 위치 가져오기
 		        List<String> location= inventory_List_Service2.getDistinctLocation();
 		        req.setAttribute("location", location);
+		        
+		        int countProduct = inventory_List_Service2.countProduct();
+		        req.setAttribute("countProduct", countProduct);
 		        
 		    } catch (NumberFormatException e) {
 		        System.out.println("NumberFormatException: " + e.getMessage());

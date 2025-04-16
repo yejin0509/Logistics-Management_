@@ -11,16 +11,14 @@ import kanri.model.InventoryProduct;
 
 public class InventoryListElseService {
 
-	public List<InventoryProduct> get_Inventory_Product_List(String productType, String productName, String company, String location,
-			int maxPrice) {
+	public List<InventoryProduct> get_Inventory_Product_List(String productType, String company, String location
+			) {
 
 		String product_Type = null;
-		String product_Name = null;
-		int max_Price = 0;
 
 		try (Connection conn = ConnectionProvider.getConnection()) {
-			List<InventoryProduct> inventory_Product = KanriDao.searchByElse(product_Type, product_Name, company,
-					location, max_Price);
+			List<InventoryProduct> inventory_Product = KanriDao.searchByElse(product_Type, company,
+					location);
 
 			return inventory_Product;
 

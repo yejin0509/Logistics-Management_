@@ -11,7 +11,7 @@ import kanri.service.InventoryListService2;
 import mvc.command.CommandHandler;
 
 //아이디 검색 했을 때 발생하는 핸들러
-public class SearchByIdHandler implements CommandHandler {
+public class SearchByNameHandler implements CommandHandler {
 	// 서비스 불러오기
 	private InventoryListService inventory_List_Service = new InventoryListService();
 	private InventoryListService2 inventory_List_Service2 = new InventoryListService2();
@@ -24,16 +24,16 @@ public class SearchByIdHandler implements CommandHandler {
 		req.setAttribute("alreadyForwarded", true);
 
 		// 어디까지 작동했는지 확인하려고 넣은 코드
-		System.out.println("Handler executed: SearchByIdHandler");
+		System.out.println("Handler executed: SearchByNameHandler");
 
 		try {
 			// 서비스에서 들어온 값을 String으로 저장
-			String product_Id = req.getParameter("product_Id");
+			String product_Name = req.getParameter("product_Name");
 			// 어디까지 작동했는지 확인하려고 넣은 코드
-			System.out.println("Received product_Id: " + product_Id);
+			System.out.println("Received product_Name: " + product_Name);
 
 			// 서비스 클래스에서 값을 못 불러왔을 떄 Exception
-			if (product_Id == null || product_Id.trim().isEmpty()) {
+			if (product_Name == null || product_Name.trim().isEmpty()) {
 				// RunTimeException 받아와서 만든 거
 				throw new IdNotFoundException();
 			}
@@ -50,28 +50,23 @@ public class SearchByIdHandler implements CommandHandler {
 			List<String> location2 = inventory_List_Service2.getDistinctLocation();
 			req.setAttribute("location", location2);
 
+			// 서비스 클래스에서 product_list에 넣은 값을 list형에 넣어줌
+			List inventory_Data = inventory_List_Service.getInventoryProductListByName(product_Name);
+			// 전체 개수 가져오기
 			int countProduct = inventory_List_Service.countProduct();
 			req.setAttribute("countProduct", countProduct);
-
-			// 서비스 클래스에서 product_list에 넣은 값을 list형에 넣어줌
-			List inventory_Data = inventory_List_Service.get_Inventory_Product_List(product_Id);
 			// 저장 영역에 맞는 값 저장
-			req.setAttribute("search_Product_Id", product_Id);
+			req.setAttribute("search_Product_Name", product_Name);
 			req.setAttribute("inventory_Data", inventory_Data);
 
 			// 예외 처리
-		} catch (NumberFormatException e) {
-			req.setAttribute("errorMessage", "상품 ID는 숫자여야 합니다.");
-			System.out.println("NumberFormatException: " + e.getMessage());
-		} catch (IdNotFoundException e) {
-			req.setAttribute("errorMessage", "해당 ID의 상품을 찾을 수 없습니다.");
-			System.out.println("IdNotFoundException: " + e.getMessage());
 		} catch (Exception e) {
 			req.setAttribute("errorMessage", "예상치 못한 오류가 발생했습니다.");
 			e.printStackTrace(); // 로그 확인 필수
 		}
 
 		return "/WEB-INF/view/inventoryListPage.jsp";
+
 	}
 
 }

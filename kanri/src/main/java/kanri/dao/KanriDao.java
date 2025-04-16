@@ -14,7 +14,7 @@ import kanri.model.InventoryProduct;
 public class KanriDao {
 
 	// 상품 ID로 상품 정보를 조회하는 DAO
-	public static InventoryProduct selectById(Connection conn, int no) throws SQLException {
+	public static InventoryProduct selectById(Connection conn, String no) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		// 실행할 쿼리문
@@ -25,7 +25,41 @@ public class KanriDao {
 		try {
 			pstmt = conn.prepareStatement(query);
 			// 들어온 값을 첫번째 ?에 집어넣기
-			pstmt.setInt(1, no);
+			pstmt.setString(1, no);
+			// query문 실행
+			rs = pstmt.executeQuery();
+			InventoryProduct inventory_Product = null;
+
+			// query실행으로 나온 값을 inventory_Product에 형식에 맞게 순차 저장
+			if (rs.next()) {
+				inventory_Product = new InventoryProduct(rs.getString("product_Id"), rs.getString("product_Type"),
+						rs.getString("product_Name"), rs.getString("company"), rs.getInt("price"),
+						rs.getString("content"), rs.getString("location"), rs.getInt("stock"));
+
+			}
+			// 저장한 형태를 반환
+			return inventory_Product;
+
+			// rs랑 pstmt 다 썼으니 꺼줘야 함
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+			// TODO: handle finally clause
+		}
+	}
+
+	public static InventoryProduct selectByName(Connection conn, String product_Name) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		// 실행할 쿼리문
+		String query = "SELECT p.product_id, p.product_type, p.product_name, p.company, p.price, "
+				+ "p.content, i.location, i.stock FROM product p INNER JOIN inventory i "
+				+ "ON p.product_id = i.product_id where p.product_Name LIKE ? ORDER BY LENGTH(p.product_Id), p.product_Id ASC";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			// 들어온 값을 첫번째 ?에 집어넣기
+			pstmt.setString(1, "%" + product_Name + "%");
 			// query문 실행
 			rs = pstmt.executeQuery();
 			InventoryProduct inventory_Product = null;
@@ -146,8 +180,27 @@ public class KanriDao {
 		}
 	}
 
-	public static List<InventoryProduct> searchByElse(String product_Type, String product_Name, String company,
-			String location, int max_Price) {
+	public static int countProduct(Connection conn) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "SELECT COUNT(PRODUCT_ID)	FROM PRODUCT";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+			return 0;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
+
+	// 동적 쿼리 구현한다고 설친 것
+	public static List<InventoryProduct> searchByElse(String product_Type, String company, String location) {
 		List<InventoryProduct> inventory_List = new ArrayList<>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -156,49 +209,45 @@ public class KanriDao {
 		try {
 			conn = ConnectionProvider.getConnection();
 
-			// 기본 SQL 생성 (조건에 따라 where 절 추가)
-			String sql = "SELECT p.product_id, p.product_type, p.product_name, p.company, p.price, p.content, i.location, i.stock FROM product p INNER JOIN inventory i ON p.product_id = i.product_id where 1=1";
+			if (product_Type == null)
+				product_Type = "all";
+			if (company == null)
+				company = "all";
+			if (location == null)
+				location = "all";
 
-			if (product_Type != null && !product_Type.equals("all")) {
-				sql += " AND product_Type = ?";
+			StringBuilder sqlBuilder = new StringBuilder();
+			sqlBuilder.append("SELECT p.product_id, p.product_type, p.product_name, p.company, p.price, ");
+			sqlBuilder.append("p.content, i.location, i.stock ");
+			sqlBuilder.append("FROM product p INNER JOIN inventory i ON p.product_id = i.product_id WHERE 1=1 ");
+
+			if (!product_Type.equals("all")) {
+				sqlBuilder.append("AND product_Type = ? ");
 			}
-			if (product_Name != null && !product_Name.isEmpty()) {
-				sql += " AND product_Name LIKE ?";
+			if (!company.equals("all")) {
+				sqlBuilder.append("AND company = ? ");
 			}
-			if (company != null && !company.equals("all")) {
-				sql += " AND company = ?";
-			}
-			if (location != null && !location.equals("all")) {
-				sql += " AND location = ?";
-			}
-			if (max_Price > 0) {
-				sql += " AND price <= ?";
+			if (!location.equals("all")) {
+				sqlBuilder.append("AND location = ? ");
 			}
 
+			String sql = sqlBuilder.toString();
 			pstmt = conn.prepareStatement(sql);
 
-			System.out.println("Generated SQL Query: " + sql);
-			// 파라미터 바인딩
 			int index = 1;
-			if (product_Type != null && !product_Type.equals("all")) {
-			    pstmt.setString(index++, product_Type);
+			if (!product_Type.equals("all")) {
+				pstmt.setString(index++, product_Type);
 			}
-			if (product_Name != null && !product_Name.isEmpty()) {
-			    pstmt.setString(index++, "%" + product_Name + "%");
+			if (!company.equals("all")) {
+				pstmt.setString(index++, company);
 			}
-			if (company != null && !company.equals("all")) {
-			    pstmt.setString(index++, company);
+			if (!location.equals("all")) {
+				pstmt.setString(index++, location);
 			}
-			if (location != null && !location.equals("all")) {
-			    pstmt.setString(index++, location);
-			}
-			if (max_Price > 0) {
-			    pstmt.setInt(index++, max_Price);
-			}
+
+			System.out.println("Generated SQL Query: " + pstmt);
 
 			rs = pstmt.executeQuery();
-
-			// 결과 처리
 			while (rs.next()) {
 				InventoryProduct item = new InventoryProduct();
 				item.setProduct_Id(rs.getString("product_Id"));
@@ -217,7 +266,6 @@ public class KanriDao {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
 			JdbcUtil.close(conn);
-
 		}
 		return inventory_List;
 	}
