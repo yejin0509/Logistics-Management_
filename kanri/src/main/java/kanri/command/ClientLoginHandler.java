@@ -29,8 +29,7 @@ public class ClientLoginHandler implements CommandHandler {
 
         } else if (req.getMethod().equalsIgnoreCase("POST")) {
             // 나중에 로그인 검증 추가할 수 있음
-            return FORM_VIEW;
-
+        	 return processSubmit(req, res);
         } else {
             res.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
             return null;
