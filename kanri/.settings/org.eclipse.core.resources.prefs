@@ -1,3 +1,6 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding//src/main/webapp/managerMenu.jsp=UTF-8
+=======
+>>>>>>> refs/remotes/origin/feature/loginPage
 encoding/<project>=UTF-8
