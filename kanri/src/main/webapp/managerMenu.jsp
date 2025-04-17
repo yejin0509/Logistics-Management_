@@ -69,7 +69,7 @@ height: auto;
 			<img src="./images/inventory_list_box.png" alt="box1" class="box1">
 				<input type="submit" style="opacity: 0; width: 100%; height: 100%; position: absolute; top: 0; left: 0; cursor: pointer;"/>
 			</form>
-		<a href="manager_order.jsp">
+		<a href="manager_order">
 			<img src="./images/order_box.png" alt="box1" class="box2">
 		</a>
 		<a href="tester.jsp">

@@ -1,18 +1,18 @@
 package kanri.command;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import mvc.command.CommandHandler;
-import jdbc.connection.ConnectionProvider;
-import kanri.dao.ManagerDao;
-import kanri.model.Manager;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import jdbc.connection.ConnectionProvider;
+import kanri.dao.ManagerDao;
+import kanri.model.Manager;
+import mvc.command.CommandHandler;
 
 public class ManagerLoginHandler implements CommandHandler {
 
@@ -59,9 +59,11 @@ public class ManagerLoginHandler implements CommandHandler {
             // 로그인 성공 → 세션에 저장
             HttpSession session = req.getSession();
             session.setAttribute("authManager", manager);
+            System.out.println("로그인 성공: 관리자 ID = " + manager.getManager_Id());
+
 
             // 로그인 성공 후 이동할 경로 (수정 필요)
-            return "/managerMain.jsp";
+            return "/managerMenu.jsp";
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -9,7 +9,7 @@
 <body>
     <div class="login-box">
         <h3>고객 로그인</h3>
-        <form action="${pageContext.request.contextPath}/clientLogin.do" method="post"> 
+        <form action="/kanri/clientLogin.do" method="post"> 
            
         <c:if test="${errors.idOrPwNotMatch}">
             <span style="color:red;">아이디와 암호가 일치하지 않습니다.</span>
@@ -36,7 +36,7 @@
         </p>
 
         <div class="login-links">
-    		<a href="${pageContext.request.contextPath}/clientjoin.do">회원가입</a> <!-- 경로 수정된 부분 -->
+    		<a href="/kanri/clientJoin.do">회원가입</a> <!-- 경로 수정된 부분 -->
 		</div>
         </form>
     </div>

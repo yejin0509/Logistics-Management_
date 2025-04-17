@@ -8,7 +8,7 @@
 <body>
     <h2>회원가입</h2>
 
-    <form action="${pageContext.request.contextPath}/clientjoin.do" method="post"> 
+    <form action="/kanri/clientJoin.do" method="post"> 
         <p>
             아이디:<br>
             <input type="text" name="client_Id" placeholder="영문 입력" required>

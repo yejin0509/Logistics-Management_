@@ -8,7 +8,7 @@
 <body>
     <h2>관리자 회원가입</h2>
 
-    <form action="${pageContext.request.contextPath}/managerJoin.do" method="post">
+    <form action="/kanri/managerJoin.do" method="post">
         <p>
             관리자 ID:<br>
             <input type="text" name="manager_Id" placeholder="아이디 입력" required>

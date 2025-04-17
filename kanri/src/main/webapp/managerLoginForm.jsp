@@ -8,7 +8,7 @@
 <body>
     <h2>관리자 로그인</h2>
 
-    <form action="${pageContext.request.contextPath}/managerLogin.do" method="post">
+    <form action="/kanri/managerLogin.do" method="post">
         <c:if test="${errors.idOrPwNotMatch}">
             <span style="color:red;">아이디 또는 비밀번호가 일치하지 않습니다.</span>
         </c:if>
@@ -35,7 +35,7 @@
 
         <!-- 회원가입 링크 -->
         <div class="login-links">
-            <a href="${pageContext.request.contextPath}/managerJoin.do">회원가입</a>
+            <a href="/kanri/managerJoin.do">회원가입</a>
         </div>
     </form>
 </body>

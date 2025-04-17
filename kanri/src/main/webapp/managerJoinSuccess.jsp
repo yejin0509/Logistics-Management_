@@ -9,7 +9,7 @@
 
     <p>이제 관리자 계정으로 로그인하실 수 있습니다.</p>
 
-    <form action="${pageContext.request.contextPath}/managerLogin.do" method="get">
+    <form action="/kanri/managerLogin.do" method="get">
         <button type="submit">로그인 화면으로 이동</button>
     </form>
 </body>

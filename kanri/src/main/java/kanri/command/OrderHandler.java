@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kanri.model.Client;
 import kanri.model.OutBound;
 import kanri.service.OutboundService;
 
@@ -19,14 +20,15 @@ public class OrderHandler extends HttpServlet {
 	    String[] product_Ids = request.getParameterValues("productId");  // 또는 productName -> ID 매핑
 	    String[] quantities = request.getParameterValues("quantity");
 	    String[] prices = request.getParameterValues("productPrice");
+    	Client client = (Client) request.getSession().getAttribute("authClient");
+    	String clientId = client.getClient_Id();
 
 	    List<OutBound> outbound_List = new ArrayList<>();
 
 	    for (int i = 0; i < product_Ids.length; i++) {
 	    	OutBound ob = new OutBound();
 
-	    	//String clientId = (String) request.getSession().getAttribute("clientId");
-	        ob.setClient_Id("111");  // 임의로 지정
+	    	ob.setClient_Id(clientId);  // 임의로 지정
 	        ob.setProduct_Id(product_Ids[i]);
 	        ob.setOut_Date(new java.sql.Date(System.currentTimeMillis()));
 	        ob.setOut_Count(Integer.parseInt(quantities[i]));
