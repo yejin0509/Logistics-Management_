@@ -15,8 +15,8 @@ import kanri.model.Product;
 /**
  * Servlet implementation class OrderFormHandler
  */
-@WebServlet("/client_order")
-public class OrderFormHandler extends HttpServlet {
+@WebServlet("/manager_order")
+public class InOrderFormHandler extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -27,7 +27,7 @@ public class OrderFormHandler extends HttpServlet {
         }
 
         request.setAttribute("productList", product_List);        // JSP에 전달
-		request.getRequestDispatcher("/client_order.jsp").forward(request, response);
+		request.getRequestDispatcher("/manager_order.jsp").forward(request, response);
 	 
 
 	}

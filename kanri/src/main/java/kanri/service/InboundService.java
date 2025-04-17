@@ -1,27 +1,28 @@
 package kanri.service;
 
 import java.sql.Connection;
+
 import java.sql.SQLException;
 import java.util.List;
 
 import jdbc.connection.ConnectionProvider;
-import kanri.dao.ClientOrderDao;
+import kanri.dao.ManagerOrderDao;
 import kanri.dao.ProductDao;
-import kanri.model.OutBound;
+import kanri.model.InBound;
 import kanri.model.Product;
 
-public class OutboundService {
-    private ClientOrderDao outbound_Dao = new ClientOrderDao();
+public class InboundService {
+    private ManagerOrderDao inbound_Dao = new ManagerOrderDao();
 
-    public void saveOutboundList(List<OutBound> list) throws SQLException {
+    public void saveOutboundList(List<InBound> list) throws SQLException {
         Connection conn = null;
         try {
             conn = ConnectionProvider.getConnection();
             conn.setAutoCommit(false);
 
             //DAO 호출 -> insert
-            for (OutBound outbound : list) {
-                outbound_Dao.insert(conn, outbound);
+            for (InBound outbound : list) {
+            	inbound_Dao.insert(conn, outbound);
             }
 
             conn.commit();
@@ -34,7 +35,7 @@ public class OutboundService {
     }
     
     public List<Product> getAllProducts() throws SQLException {
-        return ProductDao.getAllProducts();  // 정적 메서드니까 바로 사용 가능
+        return ProductDao.getAllProducts();
     }
 
 }

@@ -59,7 +59,7 @@ body {
 <body>
 	<div class="container">
 		<img src="./images/frame.png" alt="frame" class="frame">
-		<a href="tester.jsp">
+		<a href="client_order.jsp">
 			<img src="./images/order_box.png" alt="box1" class="box1">
 		</a>
 		<a href="tester.jsp">

@@ -1,6 +1,7 @@
 package kanri.command;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,34 +11,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kanri.model.OutBound;
-import kanri.service.OutboundService;
+import kanri.model.InBound;
+import kanri.service.InboundService;
 
-@WebServlet("/OrderHandler")
-public class OrderHandler extends HttpServlet {
+@WebServlet("/InOrderHandler")
+public class InOrderHandler extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    String[] product_Ids = request.getParameterValues("productId");  // 또는 productName -> ID 매핑
 	    String[] quantities = request.getParameterValues("quantity");
 	    String[] prices = request.getParameterValues("productPrice");
 
-	    List<OutBound> outbound_List = new ArrayList<>();
+	    List<InBound> inbound_List = new ArrayList<>();
 
 	    for (int i = 0; i < product_Ids.length; i++) {
-	    	OutBound ob = new OutBound();
+	    	InBound ob = new InBound();
 
-	    	//String clientId = (String) request.getSession().getAttribute("clientId");
+	    	//String managerId = (String) request.getSession().getAttribute("managerId");
 	        ob.setClient_Id("111");  // 임의로 지정
 	        ob.setProduct_Id(product_Ids[i]);
-	        ob.setOut_Date(new java.sql.Date(System.currentTimeMillis()));
-	        ob.setOut_Count(Integer.parseInt(quantities[i]));
+	        ob.setIn_Date(new java.sql.Date(System.currentTimeMillis()));
+	        ob.setIn_Count(Integer.parseInt(quantities[i]));
 	        ob.setPrice(Integer.parseInt(prices[i]));
-	        outbound_List.add(ob);
+	        inbound_List.add(ob);
 	    }
 
-	    OutboundService service = new OutboundService();
+	    InboundService service = new InboundService();
 	    //DB 발주 신청 시 성공여부 페이지 연결
 	    try {
-	        service.saveOutboundList(outbound_List);
+	        service.saveOutboundList(inbound_List);
 	        response.sendRedirect("boundSuccess.jsp");
 	    } catch (Exception e) {
 	        e.printStackTrace();
