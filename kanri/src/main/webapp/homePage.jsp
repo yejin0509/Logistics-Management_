@@ -117,8 +117,8 @@ body {
 </head>
 
 <body>
-	<a href="tester.jsp" class="toLogin1"></a>
-	<a href="clientMenu.jsp" class="toLogin2"></a>
+	<a href="managerLoginForm.jsp" class="toLogin1"></a>
+	<a href="clientLoginForm.jsp" class="toLogin2"></a>
 	<div>
 		<img alt="logo" src="./images/logo.png" class="logo"> <img
 			src="./images/shutter_login.png" class="background"

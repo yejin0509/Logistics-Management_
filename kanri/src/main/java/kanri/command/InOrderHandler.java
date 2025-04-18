@@ -40,7 +40,8 @@ public class InOrderHandler extends HttpServlet {
 	    //DB 발주 신청 시 성공여부 페이지 연결
 	    try {
 	        service.saveOutboundList(inbound_List);
-	        response.sendRedirect("boundSuccess.jsp");
+	        request.getSession().setAttribute("Id", "managerId");
+	        request.getRequestDispatcher("boundSuccess.jsp").forward(request, response);
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        response.sendRedirect("boundFail.jsp");

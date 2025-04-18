@@ -2,16 +2,58 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>회원가입 완료</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #eaeaea;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .complete-box {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            width: 350px;
+            text-align: center;
+        }
+
+        .complete-box h2 {
+            margin-bottom: 20px;
+        }
+
+        .complete-box p {
+            margin-bottom: 30px;
+        }
+
+        .complete-box button {
+            width: 100%;
+            padding: 10px;
+            background-color: black;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .complete-box button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h2>회원가입이 완료되었습니다.</h2>
-
-    <p>환영합니다! 이제 로그인하셔서 서비스를 이용하실 수 있습니다.</p>
-
-    <!-- 로그인 이동 버튼 -->
-    <form action="/kanri/clientLogin.do" method="get"> <!-- 경로 수정된 부분 -->
-        <button type="submit">로그인 화면으로 이동</button>
-    </form>
+    <div class="complete-box">
+        <h2>회원가입 완료</h2>
+        <p>환영합니다! <br>이제 로그인하셔서 서비스를 이용하실 수 있습니다.</p>
+        <form action="/kanri/clientLogin.do" method="get">
+            <button type="submit">로그인 하기</button>
+        </form>
+    </div>
 </body>
 </html>

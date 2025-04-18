@@ -16,22 +16,27 @@
 	box-shadow: none !important;
 	padding: 50px 0;
 }
+
 .card-body {
-    flex: 1 1 auto;
-    padding: 30px 0;
-    color: var(--bs-card-color);
+	flex: 1 1 auto;
+	padding: 30px 0;
+	color: var(- -bs-card-color);
 }
+
 thead th {
 	border-bottom: 2px solid #000;
 }
+
 body {
 	background-color: #f8f9fa;
 }
+
 header {
 	background-color: #fff;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	padding: 20px 0;
 }
+
 footer {
 	border-top: 1px solid #ddd;
 	margin-top: 50px;
@@ -40,48 +45,67 @@ footer {
 	color: #777;
 	font-size: 14px;
 }
+
 .total-price {
 	font-size: 1.25rem;
 	font-weight: bold;
 	text-align: right;
 }
-h1,h3{
-font-weight:bold;
+
+h1, h3 {
+	font-weight: bold;
 }
 </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <h1 class="text-center text-dark">Success</h1>
-        </div>
-    </header>
+	<!-- Header -->
+	<header>
+		<div class="container">
+			<h1 class="text-center text-dark">Success</h1>
+		</div>
+	</header>
 
-    <!-- Main -->
-    <main class="container my-4">
-        <div class="card">
-            <div class="card-header text-center">
-                <h3 class="mb-0">주문이 완료 되었습니다</h3>
-            </div>
-            <div class="card-body">
-                <div class="text-center">
-                    <button onclick="history.back()" class="btn btn-dark">메인페이지</button>
-                </div>
-            </div>
-        </div>
-    </main>
+	<!-- Main -->
+	<main class="container my-4">
+		<div class="card">
+			<div class="card-header text-center">
+				<h3 class="mb-0">주문이 완료 되었습니다</h3>
+			</div>
+			<div class="card-body">
+				<div class="text-center">
+					<!--                     <button onclick="history.back()" class="btn btn-dark">메인페이지</button>
+ -->
+					<button type="button" id="btn" class="btn btn-dark">메인페이지</button>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            &copy; <%=java.time.Year.now()%> 物流管理
-        </div>
-    </footer>
+				</div>
+			</div>
+		</div>
+	</main>
 
-    <script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			&copy;
+			<%=java.time.Year.now()%>
+			物流管理
+		</div>
+	</footer>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		
+	<script>
+	var Id = "<%=session.getAttribute("Id")%>";
+	console.log("Id:", Id); // 값 확인		
+	$("#btn").click(function() {
+			if (Id === "managerId") {
+				location.href = "managerMenu.jsp";
+			} else if (Id === "clientId") {
+				location.href = "clientMenu.jsp";
+			}
+		});
+	</script>
 
 </body>
 </html>

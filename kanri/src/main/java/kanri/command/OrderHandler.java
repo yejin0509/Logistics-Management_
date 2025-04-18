@@ -28,7 +28,7 @@ public class OrderHandler extends HttpServlet {
 	    for (int i = 0; i < product_Ids.length; i++) {
 	    	OutBound ob = new OutBound();
 
-	    	ob.setClient_Id(clientId);  // 임의로 지정
+	    	ob.setClient_Id(clientId); 
 	        ob.setProduct_Id(product_Ids[i]);
 	        ob.setOut_Date(new java.sql.Date(System.currentTimeMillis()));
 	        ob.setOut_Count(Integer.parseInt(quantities[i]));
@@ -40,7 +40,8 @@ public class OrderHandler extends HttpServlet {
 	    //DB 발주 신청 시 성공여부 페이지 연결
 	    try {
 	        service.saveOutboundList(outbound_List);
-	        response.sendRedirect("boundSuccess.jsp");
+	        request.getSession().setAttribute("Id", "clientId");
+	        request.getRequestDispatcher("boundSuccess.jsp").forward(request, response);
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        response.sendRedirect("boundFail.jsp");
