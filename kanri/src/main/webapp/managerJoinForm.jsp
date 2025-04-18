@@ -92,6 +92,7 @@ body {
 				<span>등록코드가 일치하지 않습니다.</span><br>
 			</c:if>
 			<div>
+			<br>
 			<input type="submit" value="관리자 가입">
 			</div>
 		</form>
