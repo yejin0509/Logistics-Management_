@@ -4,8 +4,21 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Manager Login</title>
-    <style>
+    <title>管理者ログイン</title>
+    <!-- 일본어 폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap"
+	rel="stylesheet">
+	
+<style>
+
+* {
+	font-family: "Kosugi Maru", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
         body {
 	font-family: 'Arial', sans-serif;
 	background-color: #eaeaea;
@@ -68,28 +81,28 @@
 </head>
 <body>
     <div class="login-box">
-        <h2>Manager Login</h2>
+        <h2>管理者ログイン</h2>
         <form action="/kanri/managerLogin.do" method="post">
             <c:if test="${errors.idOrPwNotMatch}">
-                <span>아이디 또는 비밀번호가 일치하지 않습니다.</span>
+                <span> IDまたはパスワードが一致しません</span>
                 <br/><br/>
             </c:if>
 	<p>
-            <br/><input type="text" name="manager_Id" placeholder="아이디 입력" value="${param.manager_Id}">
+            <br/><input type="text" name="manager_Id" placeholder="ID" value="${param.manager_Id}">
             <c:if test="${errors.manager_Id}">
-                <span>아이디를 입력하세요.</span>
+                <span>IDを入力してください</span>
             </c:if>
 
-            <br/><input type="password" name="password" placeholder="비밀번호 입력">
+            <br/><input type="password" name="password" placeholder="パスワード">
             <c:if test="${errors.password}">
-                <span>비밀번호를 입력하세요.</span>
+                <span>パスワードを入力してください</span>
             </c:if>
 </p>
 <p>
-            <input type="submit" value="로그인">
+            <input type="submit" value="ログイン">
 </p>
             <div class="login-links">
-                <a href="/kanri/managerJoin.do">회원가입</a>
+                <a href="/kanri/managerJoin.do">会員登録</a>
             </div>
         </form>
     </div>

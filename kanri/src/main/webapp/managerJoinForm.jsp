@@ -4,8 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 회원가입</title>
+<title>管理者会員登録</title>
+<!-- 일본어 폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap"
+	rel="stylesheet">
 <style>
+* {
+	font-family: "Kosugi Maru", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
 body {
 	font-family: 'Arial', sans-serif;
 	background-color: #eaeaea;
@@ -56,44 +67,44 @@ body {
 </head>
 <body>
 	<div class="register-box">
-		<h2>관리자 회원가입</h2>
+		<h2>管理者会員登録</h2>
 		<form action="/kanri/managerJoin.do" method="post">
 			<!-- 관리자 ID -->
 			
-			<input type="text" name="manager_Id" placeholder="아이디 입력" required>
+			<input type="text" name="manager_Id" placeholder="ID" required>
 			<c:if test="${errors.manager_Id}">
-				<span>아이디를 입력하세요.</span>
+				<span>IDを入力してください</span>
 			</c:if>
 			<c:if test="${errors.duplicateId}">
-				<span>이미 등록된 아이디입니다.</span>
+				<span>すでに登録されているIDです</span>
 			</c:if>
 
 			<!-- 비밀번호 -->
-			<input type="password" name="password" placeholder="비밀번호 입력" required>
+			<input type="password" name="password" placeholder="パスワード" required>
 			<c:if test="${errors.password}">
-				<span>비밀번호를 입력하세요.</span>
+				<span>パスワードを入力してください</span>
 			</c:if>
 
 			<!-- 비밀번호 확인 -->
-			<input type="password" name="confirmPassword" placeholder="비밀번호 확인" required>
+			<input type="password" name="confirmPassword" placeholder="パスワード確認" required>
 			<c:if test="${errors.confirmPassword}">
-				<span>비밀번호 확인을 입력하세요.</span>
+				<span>パスワード確認</span>
 			</c:if>
 			<c:if test="${errors.notMatch}">
-				<span>비밀번호가 일치하지 않습니다.</span>
+				<span>パスワードが一致しません</span>
 			</c:if>
 			
 			
 			
 		
 			<!-- 관리자 등록 코드 -->
-			<input type="text" name="registerCode" placeholder="관리자 등록코드 입력" required>
+			<input type="text" name="registerCode" placeholder="管理者登録コード入力" required>
 			<c:if test="${errors.registerCode}">
-				<span>등록코드가 일치하지 않습니다.</span><br>
+				<span>登録コードが一致しません</span><br>
 			</c:if>
 			<div>
 			<br>
-			<input type="submit" value="관리자 가입">
+			<input type="submit" value="管理者登録">
 			</div>
 		</form>
 	</div>

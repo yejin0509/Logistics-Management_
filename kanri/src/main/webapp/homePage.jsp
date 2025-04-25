@@ -4,8 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>homepage</title>
+<title>ホームページ</title>
+<!-- 일본어 폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap" rel="stylesheet">
 <style>
+* {
+  font-family: "M PLUS 1p", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 body {
 	margin: 0;
 	padding: 0;
@@ -120,10 +129,10 @@ body {
 	<a href="managerLoginForm.jsp" class="toLogin1"></a>
 	<a href="clientLoginForm.jsp" class="toLogin2"></a>
 	<div>
-		<img alt="logo" src="./images/logo.png" class="logo"> <img
-			src="./images/shutter_login.png" class="background"
-			style="top: -10%;"> <img src="./images/shutter.png"
-			class="shutter1" id="shutter1"> <img src="./images/shutter.png"
+		<img alt="logo" src="./images/logo.png?ver=2" class="logo"> <img
+			src="./images/shutter_login.png?ver=2" class="background"
+			style="top: -10%;"> <img src="./images/shutter.png?ver=2"
+			class="shutter1" id="shutter1"> <img src="./images/shutter.png?ver=2"
 			class="shutter2" id="shutter2">
 	</div>
 </body>

@@ -4,9 +4,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Frame and Box</title>
+<title>クライアントメニュー</title>
+<!-- 일본어 폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap"
+	rel="stylesheet">
 <style>
-body {
+
+* {
+	font-family: "Kosugi Maru", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+.body {
 	margin: 0;
 	padding: 0;
 	display: flex;
@@ -54,23 +66,29 @@ body {
 	right: 7%; /* frame의 왼쪽에서 40% 오른쪽으로 이동 */
 }
 
+.logo {
+	position: fixed;
+	max-width: 6.2%;
+	height: auto;
+	z-index: 90;
+}
 </style>
 </head>
 <body>
-	<div class="container">
-		<img src="./images/frame.png" alt="frame" class="frame">
-		<a href="client_order">
-			<img src="./images/order_box.png" alt="box1" class="box1">
-		</a>
-		<a href="tester.jsp">
-			<img src="./images/outbound_history_box.png" alt="box1" class="box2">
-		</a>
-		<a>
-			<img src="./images/empty_box.png" alt="box1" class="box3">
-		</a>
-		<a>
-			<img src="./images/empty_box.png" alt="box1" class="box4">
-		</a>
+	<!-- Logo -->
+	<img alt="logo" src="./images/logo.png?ver=2" class="logo">
+	
+	<div class="body">
+		<div class="container">
+			<img src="./images/frame.png?ver=2" alt="frame" class="frame"> <a
+				href="client_order"> <img src="./images/order_box.png?ver=2"
+				alt="box1" class="box1">
+			</a> <a href="tester.jsp"> <img
+				src="./images/outbound_history_box.png?ver=2" alt="box1" class="box2">
+			</a> <a> <img src="./images/empty_box.png?ver=2" alt="box1" class="box3">
+			</a> <a> <img src="./images/empty_box.png?ver=2" alt="box1" class="box4">
+			</a>
+		</div>
 	</div>
 </body>
 </html>

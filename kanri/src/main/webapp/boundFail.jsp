@@ -4,13 +4,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>주문 실패</title>
+<title>注文失敗</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 	
-<!-- 스타일 지정 -->
+	<!-- 일본어 폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap"
+	rel="stylesheet">
 <style>
+<!-- 스타일 지정 -->
+* {
+ font-family: "Kosugi Maru", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 .card-header {
 	background-color: transparent !important;
 	border-bottom: none !important;
@@ -55,6 +66,11 @@ footer {
 h1,h3{
 font-weight:bold;
 }
+* {
+ font-family: "Kosugi Maru", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 </style>
 </head>
 <body>
@@ -62,7 +78,7 @@ font-weight:bold;
 	<!-- Header -->
 	<header>
 		<div class="container">
-			<h1 class="text-center text-dark">Fail</h1>
+			<h1 class="text-center text-dark">失敗</h1>
 		</div>
 	</header>
 
@@ -70,11 +86,11 @@ font-weight:bold;
 	<main class="container my-4">
 		<div class="card">
 			<div class="card-header text-center">
-				<h3 class="mb-0">주문이 실패하였습니다</h3>
+				<h3 class="mb-0">注文に失敗しました</h3>
 			</div>
 			<div class="card-body">
 				<div class="text-center">
-					<button onclick="history.back()" class="btn btn-dark">뒤로가기</button>
+					<button onclick="history.back()" class="btn btn-dark">戻る</button>
 				</div>
 			</div>
 		</div>

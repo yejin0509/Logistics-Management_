@@ -4,12 +4,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>주문 성공</title>
+<title>注文成功</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-<!-- 스타일 지정 -->
+<!-- 일본어 폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap"
+	rel="stylesheet">
+
 <style>
+<!--
+스타일 지정 -->* {
+	font-family: "Kosugi Maru", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
 .card-header {
 	background-color: transparent !important;
 	border-bottom: none !important;
@@ -55,6 +68,12 @@ footer {
 h1, h3 {
 	font-weight: bold;
 }
+
+* {
+	font-family: "Kosugi Maru", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
 </style>
 </head>
 <body>
@@ -62,7 +81,7 @@ h1, h3 {
 	<!-- Header -->
 	<header>
 		<div class="container">
-			<h1 class="text-center text-dark">Success</h1>
+			<h1 class="text-center text-dark">成功</h1>
 		</div>
 	</header>
 
@@ -70,13 +89,13 @@ h1, h3 {
 	<main class="container my-4">
 		<div class="card">
 			<div class="card-header text-center">
-				<h3 class="mb-0">주문이 완료 되었습니다</h3>
+				<h3 class="mb-0">注文が完了しました。</h3>
 			</div>
 			<div class="card-body">
 				<div class="text-center">
 					<!--                     <button onclick="history.back()" class="btn btn-dark">메인페이지</button>
  -->
-					<button type="button" id="btn" class="btn btn-dark">메인페이지</button>
+					<button type="button" id="btn" class="btn btn-dark">ホームページ</button>
 
 				</div>
 			</div>
@@ -92,13 +111,15 @@ h1, h3 {
 		</div>
 	</footer>
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-		
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 	<script>
-	var Id = "<%=session.getAttribute("Id")%>";
-	console.log("Id:", Id); // 값 확인		
-	$("#btn").click(function() {
+	var Id = "<%=session.getAttribute("Id")%>
+		";
+		console.log("Id:", Id); // 값 확인		
+		$("#btn").click(function() {
 			if (Id === "managerId") {
 				location.href = "managerMenu.jsp";
 			} else if (Id === "clientId") {

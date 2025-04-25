@@ -5,13 +5,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>발주 신청</title>
+<title>発注依頼</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
 	rel="stylesheet">
+	<!-- 일본어 폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap"
+	rel="stylesheet">
+
 <!-- 스타일 지정 -->
 
 <style>
+
+* {
+	font-family: "Kosugi Maru", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
 .card-header {
 	background-color: transparent !important;
 	border-bottom: none !important;
@@ -56,14 +69,23 @@ footer {
 h1, h3 {
 	font-weight: bold;
 }
+
+.logo {
+	position: fixed;
+	max-width: 6.2%;
+	height: auto;
+	z-index: 90;
+}
 </style>
 </head>
 <body>
-
+	<!-- Logo -->
+	<img alt="logo" src="./images/logo.png" class="logo">
+	
 	<!-- Header -->
 	<header>
 		<div class="container">
-			<h1 class="text-center text-dark">발주 신청</h1>
+			<h1 class="text-center text-dark">発注依頼</h1>
 		</div>
 	</header>
 
@@ -78,11 +100,11 @@ h1, h3 {
 					<table class="table">
 						<thead>
 							<tr class="text-center">
-								<th>상품명</th>
-								<th>상품가격</th>
-								<th>수량</th>
-								<th>금액</th>
-								<th>삭제</th>
+								<th>商品名</th>
+								<th>商品価格</th>
+								<th>数量 </th>
+								<th>金額</th>
+								<th>削除</th>
 							</tr>
 						</thead>
 						<tbody id="orderBody">
@@ -91,7 +113,7 @@ h1, h3 {
 								<td><select name="productId"
 									class="form-select select-no-border"
 									onchange="updatePrice(this)">
-										<option value="">-- 상품 선택 --</option>
+										<option value="">-- 商品選択 --</option>
 										<c:forEach var="item" items="${productList}">
 											<option value="${item.product_Id}" data-price="${item.price}">
 												${item.product_Name}</option>
@@ -115,7 +137,7 @@ h1, h3 {
 						<button type="button" class="btn btn-outline-primary"
 							onclick="addRow()">Add</button>
 						<div class="total-price">
-							총 발주 금액: <span id="grandTotal">0</span> 원
+							総発注金額: <span id="grandTotal">0</span> 円
 						</div>
 					</div>
 
@@ -185,7 +207,7 @@ h1, h3 {
                 row.remove();
                 updateGrandTotal();
             } else {
-                alert("최소 한 개의 상품은 있어야 합니다.");
+                alert("少なくとも1つの商品をご用意ください。");
             }
         }
     </script>

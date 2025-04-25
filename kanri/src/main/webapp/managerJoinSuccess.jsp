@@ -3,8 +3,19 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>관리자 가입 완료</title>
-    <style>
+    <title>管理者登録完了</title>
+    <!-- 일본어 폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap"
+	rel="stylesheet">
+	<style>
+* {
+	font-family: "Kosugi Maru", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
         body {
             font-family: 'Arial', sans-serif;
             background-color: #eaeaea;
@@ -49,11 +60,10 @@
 </head>
 <body>
     <div class="complete-box">
-        <h2>관리자 회원가입 완료</h2>
-        <p>환영합니다! <br>이제 관리자 계정으로 로그인하실 수 있습니다.</p>
+        <h2>管理者登録完了</h2>
+        <p>ようこそ！ <br> <br>これで管理者アカウントでログインできます。</p>
         <form action="/kanri/managerLogin.do" method="get">
-        <br>
-            <button type="submit">로그인 하기</button>
+            <button type="submit">ログイン</button>
         </form>
     </div>
 </body>

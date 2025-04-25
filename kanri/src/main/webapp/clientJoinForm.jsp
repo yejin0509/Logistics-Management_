@@ -4,8 +4,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>会員登録</title>
+<!-- 일본어 폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap"
+	rel="stylesheet">
+
 <style>
+
+* {
+	font-family: "Kosugi Maru", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
 body {
 	font-family: 'Arial', sans-serif;
 	background-color: #eaeaea;
@@ -68,37 +81,37 @@ body {
 </head>
 <body>
 	<div class="register-box">
-		<h2>회원가입</h2>
+		<h2>会員登録</h2>
 		<form action="/kanri/clientJoin.do" method="post">
 
 			<p style="margin-top: 0px; margin-bottom: 0px;">
-				<br> <input type="text" name="client_Id" placeholder="아이디"
+				<br> <input type="text" name="client_Id" placeholder="ID"
 					required>
 				<c:if test="${errors.client_Id}">
-					<span>ID를 입력하세요.</span>
+					<span>IDを入力してください</span>
 				</c:if>
 				<c:if test="${errors.duplicateId}">
-					<span>이미 사용중인 아이디입니다.</span>
+					<span>すでに使われているIDです</span>
 				</c:if>
-				<br> <input type="password" name="password" placeholder="비밀번호"
+				<br> <input type="password" name="password" placeholder="パスワード"
 					required>
 				<c:if test="${errors.password}">
-					<span>비밀번호를 입력하세요.</span>
+					<span>パスワードを入力してください</span>
 				</c:if>
 
 				<br> <input type="password" name="confirmPassword"
-					placeholder="비밀번호 확인" required>
+					placeholder="パスワード確認" required>
 				<c:if test="${errors.confirmPassword}">
-					<span>비밀번호 확인을 입력하세요.</span>
+					<span>パスワード確認</span>
 				</c:if>
 				<c:if test="${errors.notMatch}">
-					<span>비밀번호가 일치하지 않습니다.</span>
+					<span>パスワードが一致しません</span>
 				</c:if>
 </p>
 
 			<div class="number-class">
 				<select name="c_Number1">
-					<option value="">선택</option>
+					<option value="">選択</option>
 					<option value="010">010</option>
 					<option value="011">011</option>
 					<option value="016">016</option>
@@ -116,38 +129,38 @@ body {
 					<option value="055">055</option>
 					<option value="064">064</option>
 				</select> - <input type="text" name="c_Number2" maxlength="4" size="4"
-					placeholder="앞자리" required> - <input type="text"
-					name="c_Number3" maxlength="4" size="4" placeholder="뒷자리" required>
+					placeholder="最初の番号" required> - <input type="text"
+					name="c_Number3" maxlength="4" size="4" placeholder="最後の番号" required>
 
 				<c:if test="${errors.c_Number}">
 					<br>
-					<span>연락처를 입력하세요.</span>
+					<span>連絡先を入力してください</span>
 				</c:if>
 			</div>
-			<input type="text" name="company" placeholder="회사명을 입력하세요"
+			<input type="text" name="company" placeholder="会社名"
 				required>
 			<c:if test="${errors.company}">
-				<span>회사명을 입력하세요.</span>
+				<span>会社名を入力してください</span>
 			</c:if>
-			<br> <input type="text" name="address" placeholder="회사주소를 입력하세요"
+			<br> <input type="text" name="address" placeholder="会社住所"
 				required>
 			<c:if test="${errors.address}">
-				<span>주소를 입력하세요.</span>
+				<span>住所を入力してください</span>
 			</c:if>
 <p>
 			<label><input type="checkbox" name="tosAgree" required>
-				이용약관 동의 (필수)</label><br> <label><input type="checkbox"
-				name="privacyAgree" required> 개인정보 수집 및 이용 동의 (필수)</label><br>
+				利用規約に同意(必須)</label><br> <label><input type="checkbox"
+				name="privacyAgree" required> 個人情報の収集および利用同意 (必須)</label><br>
 			<c:if test="${errors.tosAgree}">
-				<span>약관 동의가 필요합니다.</span>
+				<span>利用規約への同意が必要です</span>
 			</c:if>
 			<c:if test="${errors.privacyAgree}">
-				<span>개인정보 동의가 필요합니다.</span>
+				<span>個人情報への同意が必要です</span>
 			</c:if>
 </p>
 
 			<p>
-				<input type="submit" value="회원 가입하기">
+				<input type="submit" value="会員登録">
 			</p>
 		</form>
 	</div>
