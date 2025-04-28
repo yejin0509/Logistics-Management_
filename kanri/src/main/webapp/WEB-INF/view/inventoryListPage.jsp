@@ -52,7 +52,9 @@ if (fullList != null && !fullList.isEmpty()) {
 <!-- 일본어 폰트 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap"
+	rel="stylesheet">
 <style>
 table {
 	width: 100%;
@@ -99,16 +101,17 @@ h1, h3 {
 }
 
 * {
- font-family: "Kosugi Maru", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+	font-family: "Kosugi Maru", sans-serif;
+	font-weight: 400;
+	font-style: normal;
 }
 </style>
 </head>
 <body>
 	<!-- Logo -->
-	<img alt="logo" src="./images/logo.png?ver=2" class="logo">
-
+	<a class="logo" href="managerMenu.jsp"> <img alt="logo"
+		src="./images/logo.png?ver=2" class="logo">
+	</a>
 	<!-- Header -->
 	<header>
 		<div class="container">
