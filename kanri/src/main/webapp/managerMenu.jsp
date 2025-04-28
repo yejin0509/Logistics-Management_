@@ -103,9 +103,9 @@ header {
 			</form>
 			<a href="manager_order"> <img src="./images/order_box.png?ver=2"
 				alt="box1" class="box2">
-			</a> <a href="tester.jsp"> <img
+			</a> <a href="list.do"> <img
 				src="./images/inbound_history_box.png?ver=2" alt="box1" class="box3">
-			</a> <a href="tester.jsp"> <img
+			</a> <a href="list2.do"> <img
 				src="./images/outbound_history_box.png?ver=2" alt="box1"
 				class="box4">
 			</a>

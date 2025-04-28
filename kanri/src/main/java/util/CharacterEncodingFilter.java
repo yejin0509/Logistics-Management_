@@ -10,30 +10,28 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 public class CharacterEncodingFilter implements Filter {
+
 	private String encoding;
-	
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding(encoding);
-		chain.doFilter(request, response);
-
+			req.setCharacterEncoding(encoding);
+			chain.doFilter(req, res);
+			
 	}
-
-
+	
 	@Override
 	public void init(FilterConfig config) throws ServletException {
 		// TODO Auto-generated method stub
 		encoding = config.getInitParameter("encoding");
 		if(encoding == null) {
-			encoding ="UTF-8";
+			encoding = "UTF-8";
 		}
 	}
-
-	@Override
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
 	
+	@Override
+	public void destroy() {}
+		
+
 }
