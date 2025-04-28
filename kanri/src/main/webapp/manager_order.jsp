@@ -1,149 +1,151 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>入庫申請</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-	rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- 일본어 폰트 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap"
-	rel="stylesheet">
-	
+<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+
 <style>
 .card-header {
-	background-color: transparent !important;
-	border-bottom: none !important;
-	box-shadow: none !important;
-	padding: 25px 0px 0px 30px;
+    background-color: transparent !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    padding: 25px 0px 0px 30px;
 }
 
 thead th {
-	border-bottom: 2px solid #000;
+    border-bottom: 2px solid #000;
 }
 
 body {
-	background-color: #f8f9fa;
+    background-color: #f8f9fa;
 }
 
 header {
-	background-color: #fff;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	padding: 20px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+    position: relative;
 }
 
 footer {
-	border-top: 1px solid #ddd;
-	margin-top: 50px;
-	padding: 20px 0;
-	text-align: center;
-	color: #777;
-	font-size: 14px;
+    border-top: 1px solid #ddd;
+    margin-top: 50px;
+    padding: 20px 0;
+    text-align: center;
+    color: #777;
+    font-size: 14px;
 }
 
 .total-price {
-	font-size: 1.25rem;
-	font-weight: bold;
-	text-align: right;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-align: right;
 }
 
 h1, h3 {
-	font-weight: bold;
+    font-weight: bold;
 }
+
 * {
- font-family: "Kosugi Maru", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Kosugi Maru", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* 로고 스타일 수정 */
+.logo {
+    position: absolute; /* absolute로 설정하여 header 내부에서 위치 조정 */
+    top: 20px;          /* 상단에서 20px */
+    left: 20px;         /* 왼쪽에서 20px */
+    max-width: 6%;      /* 로고의 최대 너비 설정 */
+    height: auto;
+    z-index: 90;
 }
 </style>
 </head>
 <body>
 
-	<!-- Header -->
-	<header>
-		<div class="container">
-			<h1 class="text-center text-dark">入庫申請</h1>
-		</div>
-	</header>
+    <!-- Logo -->
+    <a class="logo" href="managerMenu.jsp">
+        <img alt="logo" src="./images/logo.png?ver=2" class="logo">
+    </a>
 
-	<!-- Main -->
-	<main class="container my-4">
-		<div class="card">
-			<div class="card-header text-left">
-				<h3 class="mb-0">Order Form</h3>
-			</div>
-			<div class="card-body">
-				<form action="InOrderHandler" method="post" id="manager_order">
-					<table class="table">
-						<thead>
-							<tr class="text-center">
-								<th>商品名</th>
-								<th>商品価格</th>
-								<th>数量</th>
-								<th>金額</th>
-								<th>削除</th>
-							</tr>
-						</thead>
-						<tbody id="orderBody">
-							<tr>
-								<td><select name="productId"
-									class="form-select select-no-border"
-									onchange="updatePrice(this)">
-										<option value="">-- 商品選択 --</option>
-										<c:forEach var="item" items="${productList}">
-											<option value="${item.product_Id}" data-price="${item.price}">
-												${item.product_Name}</option>
-										</c:forEach>
-								</select></td>
-								<td><input type="text" name="productPrice" readonly
-									class="form-control no-border-input" /></td>
-								<td><input type="number" name="quantity" min="1" value="1"
-									class="form-control no-border-input"
-									onchange="calculateRowTotal(this)" /></td>
-								<td><input type="text" name="rowTotal" readonly
-									class="form-control no-border-input" /></td>
-								<td class="text-center">
-									<button type="button" class="btn" onclick="removeRow(this)">🗑️</button>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+    <!-- Header -->
+    <header>
+    
+        <div class="container">
+            <h1 class="text-center text-dark">入庫申請</h1>
+        </div>
+    </header>
 
-					<div class="d-flex justify-content-between align-items-center my-3">
-						<button type="button" class="btn btn-outline-primary"
-							onclick="addRow()">Add</button>
-						<div class="total-price">
-							総入荷金額: <span id="grandTotal">0</span>円
-						</div>
-					</div>
+    <!-- Main -->
+    <main class="container my-4">
+        <div class="card">
+            <div class="card-header text-left">
+                <h3 class="mb-0">Order Form</h3>
+            </div>
+            <div class="card-body">
+                <form action="InOrderHandler" method="post" id="manager_order">
+                    <table class="table">
+                        <thead>
+                            <tr class="text-center">
+                                <th>商品名</th>
+                                <th>商品価格</th>
+                                <th>数量</th>
+                                <th>金額</th>
+                                <th>削除</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orderBody">
+                            <tr>
+                                <td><select name="productId" class="form-select select-no-border" onchange="updatePrice(this)">
+                                    <option value="">-- 商品選択 --</option>
+                                    <c:forEach var="item" items="${productList}">
+                                        <option value="${item.product_Id}" data-price="${item.price}">
+                                            ${item.product_Name}</option>
+                                    </c:forEach>
+                                </select></td>
+                                <td><input type="text" name="productPrice" readonly class="form-control no-border-input" /></td>
+                                <td><input type="number" name="quantity" min="1" value="1" class="form-control no-border-input" onchange="calculateRowTotal(this)" /></td>
+                                <td><input type="text" name="rowTotal" readonly class="form-control no-border-input" /></td>
+                                <td class="text-center">
+                                    <button type="button" class="btn" onclick="removeRow(this)">🗑️</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-					<div class="text-end">
-						<input type="submit" value="Submit Order" class="btn"
-							style="background-color: black; color: white;" />
-					</div>
-				</form>
-			</div>
-		</div>
-	</main>
+                    <div class="d-flex justify-content-between align-items-center my-3">
+                        <button type="button" class="btn btn-outline-primary" onclick="addRow()">Add</button>
+                        <div class="total-price">
+                            総入荷金額: <span id="grandTotal">0</span>円
+                        </div>
+                    </div>
 
-	<!-- Footer -->
-	<footer>
-		<div class="container">
-			&copy;
-			<%=java.time.Year.now()%>
-			物流管理
-		</div>
-	</footer>
+                    <div class="text-end">
+                        <input type="submit" value="Submit Order" class="btn" style="background-color: black; color: white;" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
 
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-	<script>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            &copy; <%=java.time.Year.now()%> 物流管理
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
         function updatePrice(selectElement) {
             const price = selectElement.options[selectElement.selectedIndex].dataset.price || 0;
             const row = selectElement.closest('tr');

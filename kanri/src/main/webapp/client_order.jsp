@@ -80,8 +80,9 @@ h1, h3 {
 </head>
 <body>
 	<!-- Logo -->
-	<img alt="logo" src="./images/logo.png" class="logo">
-	
+<a class="logo" href="clientMenu.jsp">
+    <img alt="logo" src="./images/logo.png?ver=2" class="logo">
+</a>
 	<!-- Header -->
 	<header>
 		<div class="container">

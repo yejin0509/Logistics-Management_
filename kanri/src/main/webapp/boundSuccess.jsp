@@ -93,8 +93,7 @@ h1, h3 {
 			</div>
 			<div class="card-body">
 				<div class="text-center">
-					<!--                     <button onclick="history.back()" class="btn btn-dark">메인페이지</button>
- -->
+
 					<button type="button" id="btn" class="btn btn-dark">ホームページ</button>
 
 				</div>
@@ -116,16 +115,19 @@ h1, h3 {
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 	<script>
-	var Id = "<%=session.getAttribute("Id")%>
-		";
-		console.log("Id:", Id); // 값 확인		
-		$("#btn").click(function() {
-			if (Id === "managerId") {
-				location.href = "managerMenu.jsp";
-			} else if (Id === "clientId") {
-				location.href = "clientMenu.jsp";
-			}
-		});
+	// 세션 변수 Id를 제대로 전달하기 위해 작은 따옴표를 추가
+    var Id = "<%=session.getAttribute("Id")%>";
+    console.log("Id:", Id); // 세션 값 확인
+
+    $("#btn").click(function() {
+        if (Id === "managerId") {
+            location.href = "managerMenu.jsp";  // 관리자 페이지로 이동
+        } else if (Id === "clientId") {
+            location.href = "clientMenu.jsp";   // 클라이언트 페이지로 이동
+        } else {
+            alert("잘못된 ID입니다.");
+        }
+    });
 	</script>
 
 </body>
