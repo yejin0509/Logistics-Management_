@@ -60,7 +60,7 @@ body, html {
 }
 
 .box1 {
-    top: 12.7%;
+    top: 10%;
     left: 7%;
     background-image: url('./images/inventory_list_box.png');
     display: block;
@@ -79,7 +79,7 @@ body, html {
 }
 
 .box2 {
-    top: 12.7%;
+    top: 10%;
     left: 40%;
     background-image: url('./images/order_box.png');
     display: block;
@@ -97,7 +97,7 @@ body, html {
     background-image: url('./images/order_box_open.png');
 }
 .box3 {
-    top: 49%;
+    top: 46.3%;
     left: 7%;
     background-image: url('./images/inbound_history_box.png');
     display: block;
@@ -115,7 +115,7 @@ body, html {
     background-image: url('./images/inbound_history_box_open.png');
 }
 .box4 {
-    top: 49%;
+    top: 46.3%;
     left: 40%;
     background-image: url('./images/outbound_history_box.png');
     display: block;
@@ -165,7 +165,7 @@ footer {
 	<header>
 		<div class="container" >
 		
-			<h1 class="text-center text-dark">Menu</h1>
+			<h1 class="text-center text-dark">MENU</h1>
 		</div>
 	</header>
 

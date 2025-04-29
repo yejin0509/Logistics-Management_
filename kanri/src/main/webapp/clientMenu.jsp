@@ -64,7 +64,7 @@ body, html {
 }
 
 .box1 {
-	top: 8.1%;
+	top: 7.6%;
 	background-image: url('./images/order_box.png');
 	display: block;
 	width: 70%; /* 크기를 더 크게 */
@@ -113,7 +113,7 @@ footer {
 	<header>
 		<div class="container">
 
-			<h1 class="text-center text-dark">Menu</h1>
+			<h1 class="text-center text-dark">MENU</h1>
 		</div>
 	</header>
 
