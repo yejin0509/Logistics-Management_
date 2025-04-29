@@ -28,10 +28,9 @@ body {
 }
 
 header {
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px 0;
-    position: relative;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	padding: 20px 0;
 }
 
 footer {
@@ -61,29 +60,24 @@ h1, h3 {
 
 /* 로고 스타일 수정 */
 .logo {
-    position: absolute; /* absolute로 설정하여 header 내부에서 위치 조정 */
-    top: 20px;          /* 상단에서 20px */
-    left: 20px;         /* 왼쪽에서 20px */
-    max-width: 6%;      /* 로고의 최대 너비 설정 */
-    height: auto;
-    z-index: 90;
+	position: fixed;
+	max-width: 6.2%;
+	height: auto;
+	z-index: 90;
 }
 </style>
 </head>
 <body>
-
     <!-- Logo -->
-    <a class="logo" href="managerMenu.jsp">
-        <img alt="logo" src="./images/logo.png?ver=2" class="logo">
-    </a>
-
-    <!-- Header -->
-    <header>
-    
-        <div class="container">
-            <h1 class="text-center text-dark">入庫申請</h1>
-        </div>
-    </header>
+<a class="logo" href="clientMenu.jsp">
+    <img alt="logo" src="./images/logo.png?ver=2" class="logo">
+</a>
+	<!-- Header -->
+	<header>
+		<div class="container">
+			<h1 class="text-center text-dark">入庫申請</h1>
+		</div>
+	</header>
 
     <!-- Main -->
     <main class="container my-4">

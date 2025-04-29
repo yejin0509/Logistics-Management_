@@ -4,90 +4,132 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>クライアントメニュー</title>
+<title>管理者メニュー</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 <!-- 일본어 폰트 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap"
 	rel="stylesheet">
-<style>
 
+<style>
 * {
 	font-family: "Kosugi Maru", sans-serif;
 	font-weight: 400;
 	font-style: normal;
 }
-.body {
+
+body, html {
 	margin: 0;
 	padding: 0;
+	height: 100vh;
+	overflow: hidden; /* ✅ 스크롤 방지 */
+}
+
+.body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100vh; /* 화면 높이를 채우는 설정 */
-	background-color: #eaeaea; /* 배경색 */
+	height: 100vh;
 }
 
-.container {
-	position: relative; /* 자식 요소들의 위치 조정을 위해 상대 위치 */
-	width: 50%; /* frame의 너비 설정 */
+.container1 {
+	position: relative;
+	width: 50%;
+	height: 700px; /* ✅ frame 높이보다 큰 고정 높이 지정 (임시값) */
+	top: -15%;
 }
 
+/* frame 이미지를 맨 위로 시각적으로 배치, 클릭 무시 */
 .frame {
-	width: 100%; /* container에 맞춰 중앙 정렬 */
-	display: block;
+	width: 100%;
+	height: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	pointer-events: none;
+}
+
+/* 박스 공통 */
+.box1, .box2, .box3, .box4 {
+	position: absolute;
+	width: 100%;
+	z-index: 10;
+	background-size: cover;
+	background-position: center;
 }
 
 .box1 {
-	position: absolute; /* frame 위에 자유롭게 배치 */
-	width: 53%; /* box 크기 설정 */
-	top: 14.2%; /* frame의 위쪽에서 20% 아래로 이동 */
-	left: 7%; /* frame의 왼쪽에서 40% 오른쪽으로 이동 */
+	top: 8.1%;
+	background-image: url('./images/order_box.png');
+	display: block;
+	width: 70%; /* 크기를 더 크게 */
+	height: auto;
+	padding-top: 40%; /* 비율을 수정하여 높이를 키움 */
+	transition: background-image 0.5s ease;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
-.box2 {
-	position: absolute; /* frame 위에 자유롭게 배치 */
-	width: 53%; /* box 크기 설정 */
-	top: 14.2%; /* frame의 위쪽에서 20% 아래로 이동 */
-	right: 7%; /* frame의 왼쪽에서 40% 오른쪽으로 이동 */
-}
-
-.box3 {
-	position: absolute; /* frame 위에 자유롭게 배치 */
-	width: 53%; /* box 크기 설정 */
-	top: 41.7%; /* frame의 위쪽에서 20% 아래로 이동 */
-	left: 7%; /* frame의 왼쪽에서 40% 오른쪽으로 이동 */
-}
-
-.box4 {
-	position: absolute; /* frame 위에 자유롭게 배치 */
-	width: 53%; /* box 크기 설정 */
-	top: 41.7%; /* frame의 위쪽에서 20% 아래로 이동 */
-	right: 7%; /* frame의 왼쪽에서 40% 오른쪽으로 이동 */
+/* 마우스를 올리면 이미지 변경 */
+.box1:hover {
+	background-image: url('./images/order_box_open.png');
 }
 
 .logo {
 	position: fixed;
 	max-width: 6.2%;
 	height: auto;
-	z-index: 90;
+	z-index: 101;
+}
+
+header {
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	padding: 20px 0;
+}
+
+footer {
+	border-top: 1px solid #ddd;
+	margin-top: 50px;
+	padding: 20px 0;
+	text-align: center;
+	color: #777;
+	font-size: 14px;
 }
 </style>
 </head>
 <body>
-	<!-- Logo -->
+
+	<!-- 로고 -->
 	<img alt="logo" src="./images/logo.png?ver=2" class="logo">
-	
-	<div class="body">
+
+	<!-- Header -->
+	<header>
 		<div class="container">
-			<img src="./images/frame.png?ver=2" alt="frame" class="frame"> <a
-				href="client_order"> <img src="./images/order_box.png?ver=2"
-				alt="box1" class="box1">
-			</a> <a href="tester.jsp"> <img
-				src="./images/outbound_history_box.png?ver=2" alt="box1" class="box2">
-			</a> <a> <img src="./images/empty_box.png?ver=2" alt="box1" class="box3">
-			</a> <a> <img src="./images/empty_box.png?ver=2" alt="box1" class="box4">
+
+			<h1 class="text-center text-dark">Menu</h1>
+		</div>
+	</header>
+
+
+	<div class="body">
+		<div class="container1">
+
+			<!-- 박스 링크들 -->
+			<a href="client_order">
+				<div style="width: 95%; height: 95%;" class="box1"></div> <!-- img에서 div로 변경 -->
 			</a>
+
+
+			<!-- 프레임 이미지 -->
+			<img src="./images/frame2.png" alt="frame" class="frame">
+
 		</div>
 	</div>
 </body>
