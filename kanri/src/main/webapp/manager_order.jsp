@@ -86,7 +86,7 @@ h1, h3 {
                 <h3 class="mb-0">Order Form</h3>
             </div>
             <div class="card-body">
-                <form action="InOrderHandler" method="post" id="manager_order" onsubmit ="return validateForm()">
+                <form action="InOrderHandler" method="post" id="manager_order">
                     <table class="table">
                         <thead>
                             <tr class="text-center">
@@ -186,29 +186,6 @@ h1, h3 {
             } else {
                 alert("少なくとも1つの商品をご用意ください。");
             }
-        }
-        
-        function validateForm() {
-            const rows = document.querySelectorAll("#orderBody tr");
-            for (const row of rows) {
-                const productId = row.querySelector("select[name='productId']").value;
-                const productPrice = row.querySelector("input[name='productPrice']").value;
-                const quantity = row.querySelector("input[name='quantity']").value;
-
-                if (!productId) {
-                    alert("商品を選択してください。");
-                    return false;
-                }
-                if (!productPrice) {
-                    alert("商品価格が未入力です。");
-                    return false;
-                }
-                if (!quantity || parseInt(quantity) < 1) {
-                    alert("数量を正しく入力してください。");
-                    return false;
-                }
-            }
-            return true;
         }
     </script>
 </body>
